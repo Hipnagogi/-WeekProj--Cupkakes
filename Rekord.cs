@@ -15,4 +15,8 @@ public class Rekord
 		Date = date;
 		TotalCash = this.price * SoldTotal;
 	}
+
+
+
+
 }

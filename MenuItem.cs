@@ -93,6 +93,7 @@ public class MenuItem
 				Program.ReportType = item.reportType;
 				break;
 			case 3:
+				Console.WriteLine("I'a Here");
 				CustomAction();
 				NextMenu = item.nextMenuID;
 				LastMenu = Program.CurrentMenuId;
@@ -100,8 +101,19 @@ public class MenuItem
 		}
 	}
 	private void CustomAction()
-	{ 
-		///
+	{
+		ScreenText.Print("Enter the period for which you want to generate the report.");
+		
+		bool loop = true;
+		FromTo customPeriod = null;
+		while (loop)
+		{
+			ScreenText.Print("Requiered Input format YYYY/MM/DD - YYYY/MM/DD");
+			loop = FromTo.CustomReportParse(Console.ReadLine(),out customPeriod);
+		}
+
+		Program.Period = customPeriod;
+
 	}
 
 

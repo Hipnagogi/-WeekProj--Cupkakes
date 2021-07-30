@@ -64,16 +64,33 @@ public class FromTo
 		return date.AddDays(add);
 	}
 
+	public static bool CustomReportParse(string s, out FromTo customPeriod)
+	{
+		bool loop = true;
+		s = s.Trim(' ');
+		try
+		{
+			DateTime[] customDates = new DateTime[2];
+			string[] str = s.Split('-');
+			for (int i = 0; i < 2; i++)
+			{
+				string[] dataString = str[i].Split('/');
+				customDates[i] = new DateTime(Int32.Parse(dataString[0]), Int32.Parse(dataString[1]), Int32.Parse(dataString[2]));
+			}
 
+			customPeriod = new FromTo(customDates[0],customDates[1]);
+			ScreenText.Print($"Period: {customPeriod.From} - {customPeriod.To}");
+			loop = false;
+		}
+		catch
+		{
+			ScreenText.Print("Wrong Input");
+			customPeriod = null;
+			loop = true;
+		}
+
+
+		return loop;
+	}
 
 }
-/* Nie wiem co to jest
- 	public static int[] GetWeek()
-	{
-		DateTime.Compare(Program.Today.Date, Program.Today.Date);
-
-		//Program.Today.Date
-		// This week last week 
-		return null;
-	}
- */

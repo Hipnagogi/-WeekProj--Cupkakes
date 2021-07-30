@@ -114,4 +114,8 @@ public static class ScreenText
 	{
 		Console.WriteLine($"Press {id} to choose {tekst}");
 	}
+	public static void Print(string str)
+	{
+		Console.WriteLine(str);
+	}
 }
